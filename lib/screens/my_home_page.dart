@@ -8,7 +8,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Catelog App"),
+        title: Text("Catelog App"),
       ),
       body: Center(
         // ignore: avoid_unnecessary_containers

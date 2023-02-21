@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:my_catelog_app/screens/login_page.dart';
 import 'package:my_catelog_app/screens/my_home_page.dart';
 import 'package:my_catelog_app/utils/routes.dart';
+import 'package:my_catelog_app/widgets/themes.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,14 +16,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       themeMode: ThemeMode.light,
-      theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-        fontFamily: GoogleFonts.lato().fontFamily
-      ),
+      theme: MyTheme.lightTheme(context),
       debugShowCheckedModeBanner: false,
-      darkTheme: ThemeData(
-        brightness: Brightness.dark
-      ),
+      darkTheme: MyTheme.darkTheme(context),
       initialRoute: MyRoutes.homeRoute,
       routes: {
         "/" :(context) => LoginPage(),
