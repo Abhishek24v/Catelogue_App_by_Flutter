@@ -21,7 +21,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   loadData() async {
-    await Future.delayed(Duration(seconds: 2));
+    //await Future.delayed(Duration(seconds: 1));
     final catelogJson = await rootBundle.loadString("res/files/catelog.json");
     final decodeData = jsonDecode(catelogJson);
     var productData = decodeData["products"];
@@ -42,10 +42,28 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: (CatelogModels.items != null && CatelogModels.items!.isNotEmpty)
-            ? ListView.builder(
+            ? GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 16,
+                    crossAxisSpacing: 16
+                    ),
+                itemBuilder: (context, index) {
+                  final item = CatelogModels.items![index];
+                  return Card(
+                    clipBehavior: Clip.antiAlias,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: GridTile(
+                      header: Text(item.name!),
+                      child: Image.network(item.image!),
+                      footer: Text(item.price!.toString()),
+                      ),
+                  );
+                },
                 itemCount: CatelogModels.items!.length,
-                itemBuilder: (context, index) =>
-                    ItemWidget(item: CatelogModels.items![index]))
+              )
             : Center(
                 child: CircularProgressIndicator(),
               ),
