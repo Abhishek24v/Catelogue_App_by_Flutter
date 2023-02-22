@@ -1,13 +1,34 @@
+import "dart:convert";
+
 import "package:flutter/material.dart";
+import "package:flutter/services.dart";
 import "package:my_catelog_app/models/catelog.dart";
 import "package:my_catelog_app/widgets/drawer.dart";
 import "package:my_catelog_app/widgets/themes.dart";
 
 import "../widgets/item_widget.dart";
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
 
-  final dummyList = List.generate(20, (index) => CatelogModels.items[0]);
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  void initState() {
+    super.initState();
+    loadData();
+  }
+
+  loadData() async {
+    await Future.delayed(Duration(seconds: 2));
+    final catelogJson = await rootBundle.loadString("res/files/catelog.json");
+    final decodeData = jsonDecode(catelogJson);
+    var productData = decodeData["products"];
+    CatelogModels.items =
+        List.from(productData).map<Item>((item) => Item.fromMap(item)).toList();
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +41,14 @@ class MyHomePage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ListView.builder(
-            itemCount: dummyList.length,
-            itemBuilder: (context, index) {
-              return ItemWidget(item: dummyList[index]);
-            }),
+        child: (CatelogModels.items != null && CatelogModels.items!.isNotEmpty)
+            ? ListView.builder(
+                itemCount: CatelogModels.items!.length,
+                itemBuilder: (context, index) =>
+                    ItemWidget(item: CatelogModels.items![index]))
+            : Center(
+                child: CircularProgressIndicator(),
+              ),
       ),
       drawer: MyDrawer(),
     );
