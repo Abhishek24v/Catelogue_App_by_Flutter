@@ -58,7 +58,7 @@ class CatelogItem extends StatelessWidget {
                             MaterialStateProperty.all(MyTheme.darkBlueColor),
                         shape: MaterialStateProperty.all(StadiumBorder())),
                     onPressed: () {},
-                    child: "Buy".text.make())
+                    child: "+".text.make())
               ],
             ).pOnly(right: 8.0)
           ],

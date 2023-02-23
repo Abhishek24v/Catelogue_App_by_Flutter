@@ -12,7 +12,9 @@ class HomeDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
       backgroundColor: MyTheme.creamColor,
       bottomNavigationBar: Container(
         color: Colors.white,
@@ -27,7 +29,7 @@ class HomeDetailPage extends StatelessWidget {
                             MaterialStateProperty.all(MyTheme.darkBlueColor),
                         shape: MaterialStateProperty.all(StadiumBorder())),
                     onPressed: () {},
-                    child: "Buy".text.make()).wh(100, 50)
+                    child: "Add to cart".text.make()).wh(120, 50)
               ],
             ).p32(),
       ),
@@ -50,6 +52,8 @@ class HomeDetailPage extends StatelessWidget {
                     children: [
                       catelog.name!.text.xl4.color(MyTheme.darkBlueColor).bold.make(),
                       catelog.des!.text.textStyle(context.captionStyle).xl.make(),
+                      "The iPhone is a line of smartphones produced by Apple Inc. which uses Apple's own iOS mobile operating system. The first-generation iPhone was announced by then-Apple CEO Steve Jobs on January 9, 2007. Since then, Apple has annually released new iPhone models and iOS updates."
+                      .text.textStyle(context.captionStyle).make().p16()
                     ],
                   ).py64(),
                 ),
