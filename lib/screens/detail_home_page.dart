@@ -15,9 +15,9 @@ class HomeDetailPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
       ),
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: context.canvasColor,
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: context.cardColor,
         child: ButtonBar(
               alignment: MainAxisAlignment.spaceBetween,
               buttonPadding: EdgeInsets.zero,
@@ -26,7 +26,7 @@ class HomeDetailPage extends StatelessWidget {
                 ElevatedButton(
                     style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all(MyTheme.darkBlueColor),
+                            MaterialStateProperty.all(context.theme.buttonColor),
                         shape: MaterialStateProperty.all(StadiumBorder())),
                     onPressed: () {},
                     child: "Add to cart".text.make()).wh(120, 50)
@@ -46,11 +46,11 @@ class HomeDetailPage extends StatelessWidget {
                 edge: VxEdge.TOP,
                 arcType: VxArcType.CONVEY,
                 child: Container(
-                  color: Colors.white,
+                  color: context.cardColor,
                   width: context.screenWidth,
                   child: Column(
                     children: [
-                      catelog.name!.text.xl4.color(MyTheme.darkBlueColor).bold.make(),
+                      catelog.name!.text.xl4.color(context.accentColor).bold.make(),
                       catelog.des!.text.textStyle(context.captionStyle).xl.make(),
                       "The iPhone is a line of smartphones produced by Apple Inc. which uses Apple's own iOS mobile operating system. The first-generation iPhone was announced by then-Apple CEO Steve Jobs on January 9, 2007. Since then, Apple has annually released new iPhone models and iOS updates."
                       .text.textStyle(context.captionStyle).make().p16()

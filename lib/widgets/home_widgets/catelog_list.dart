@@ -45,7 +45,7 @@ class CatelogItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            catelog.name!.text.lg.color(MyTheme.darkBlueColor).bold.make(),
+            catelog.name!.text.lg.color(context.accentColor).bold.make(),
             catelog.des!.text.textStyle(context.captionStyle).make(),
             ButtonBar(
               alignment: MainAxisAlignment.spaceBetween,
@@ -55,7 +55,7 @@ class CatelogItem extends StatelessWidget {
                 ElevatedButton(
                     style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all(MyTheme.darkBlueColor),
+                            MaterialStateProperty.all(context.theme.buttonColor),
                         shape: MaterialStateProperty.all(StadiumBorder())),
                     onPressed: () {},
                     child: "+".text.make())
@@ -64,6 +64,6 @@ class CatelogItem extends StatelessWidget {
           ],
         ))
       ],
-    )).white.rounded.square(150).make().py16();
+    )).color(context.cardColor).rounded.square(150).make().py16();
   }
 }

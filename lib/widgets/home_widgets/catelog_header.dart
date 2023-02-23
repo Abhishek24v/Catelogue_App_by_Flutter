@@ -10,7 +10,7 @@ class CatelogHeader extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        "Catelog App".text.xl5.bold.color(MyTheme.darkBlueColor).make(),
+        "Catelog App".text.xl5.bold.color(context.theme.accentColor).make(),
         "Trending products".text.xl2.make(),
       ],
     );
