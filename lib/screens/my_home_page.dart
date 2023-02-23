@@ -3,10 +3,10 @@ import "dart:convert";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:my_catelog_app/models/catelog.dart";
-import "package:my_catelog_app/widgets/drawer.dart";
 import "package:my_catelog_app/widgets/themes.dart";
-
-import "../widgets/item_widget.dart";
+import "package:velocity_x/velocity_x.dart";
+import "../widgets/home_widgets/catelog_header.dart";
+import '../widgets/home_widgets/catelog_list.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -33,42 +33,21 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Catelog App",
-          style: MyTheme.lightTheme(context).textTheme.bodyText1,
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: (CatelogModels.items != null && CatelogModels.items!.isNotEmpty)
-            ? GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 16,
-                    crossAxisSpacing: 16
-                    ),
-                itemBuilder: (context, index) {
-                  final item = CatelogModels.items![index];
-                  return Card(
-                    clipBehavior: Clip.antiAlias,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: GridTile(
-                      header: Text(item.name!),
-                      child: Image.network(item.image!),
-                      footer: Text(item.price!.toString()),
-                      ),
-                  );
-                },
-                itemCount: CatelogModels.items!.length,
-              )
-            : Center(
-                child: CircularProgressIndicator(),
-              ),
-      ),
-      drawer: MyDrawer(),
+      backgroundColor: MyTheme.creamColor,
+      body: SafeArea(
+          child: Container(
+        padding: Vx.m32,
+        child: Column(children: [
+          CatelogHeader(),
+          if (CatelogModels.items != null && CatelogModels.items!.isNotEmpty)
+            CatelogList().py16().expand()
+          else
+            CircularProgressIndicator().centered().expand(),
+        ]),
+      )),
     );
   }
 }
+
+
+
