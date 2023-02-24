@@ -4,20 +4,16 @@ import 'package:velocity_x/velocity_x.dart';
 import '../../models/cart.dart';
 import '../../models/catelog.dart';
 
-class AddToCart extends StatefulWidget {
+class AddToCart extends StatelessWidget {
   final Item catelog;
 
-  const AddToCart({super.key, required this.catelog});
-  @override
-  State<AddToCart> createState() => AddToCartState();
-}
+ AddToCart({super.key, required this.catelog});
 
-class AddToCartState extends State<AddToCart> {
   final _cart = CartModel();
 
   @override
   Widget build(BuildContext context) {
-    bool isInCart = _cart.items?.contains(widget.catelog) ?? false;
+    bool isInCart = _cart.items?.contains(catelog) ?? false;
     return ElevatedButton(
         style: ButtonStyle(
             backgroundColor:
@@ -28,8 +24,7 @@ class AddToCartState extends State<AddToCart> {
             isInCart = isInCart.toggle();
             final _catelog = CatelogModels();
             _cart.catelog = _catelog;
-            _cart.add(widget.catelog);
-            setState(() {});
+            _cart.add(catelog);
           }
         },
         child: isInCart ? Icon(Icons.done) : Icon(CupertinoIcons.cart_badge_plus));
