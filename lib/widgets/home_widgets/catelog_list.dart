@@ -14,12 +14,14 @@ class CatelogList extends StatelessWidget {
         shrinkWrap: true,
         itemCount: CatelogModels.items!.length,
         itemBuilder: (context, index) {
-          final catelog = CatelogModels.items![index];
+          final catelog = CatelogModels.getItemByPos(index);
           return InkWell(
-            onTap: () => Navigator.push(context, 
-            MaterialPageRoute(builder: (context) => HomeDetailPage(catelog: catelog))),
-            child: CatelogItem(catelog: catelog)
-            );
+              onTap: () => 
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => HomeDetailPage(catelog: catelog))),
+              child: CatelogItem(catelog: catelog));
         });
   }
 }
@@ -54,8 +56,8 @@ class CatelogItem extends StatelessWidget {
                 "\$${catelog.price!}".text.bold.xl.make(),
                 ElevatedButton(
                     style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(context.theme.buttonColor),
+                        backgroundColor: MaterialStateProperty.all(
+                            context.theme.buttonColor),
                         shape: MaterialStateProperty.all(StadiumBorder())),
                     onPressed: () {},
                     child: "+".text.make())
