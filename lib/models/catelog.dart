@@ -5,11 +5,11 @@ class CatelogModels {
   static List<Item>? items;
 
   //get item by ID
-  static Item getItem(String id) =>
+  Item getItem(String id) =>
       items!.firstWhere((element) => element.id == id, orElse: null);
 
   //get item by position
-  static Item getItemByPos(int pos) => items![pos];
+  Item getItemByPos(int pos) => items![pos];
 }
 
 class Item {
