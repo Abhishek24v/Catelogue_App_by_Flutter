@@ -1,6 +1,11 @@
 import 'package:my_catelog_app/models/catelog.dart';
 
 class CartModel {
+
+  static final catModel = CartModel._internal();
+  CartModel._internal();
+  factory CartModel() => catModel;
+
   //catelog field
   late CatelogModels _catelog;
 
