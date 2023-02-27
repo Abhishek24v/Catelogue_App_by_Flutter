@@ -6,13 +6,12 @@ import 'package:my_catelog_app/screens/login_page.dart';
 import 'package:my_catelog_app/screens/my_home_page.dart';
 import 'package:my_catelog_app/utils/routes.dart';
 import 'package:my_catelog_app/widgets/themes.dart';
+import 'package:url_strategy/url_strategy.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 void main() {
-  runApp(VxState(
-    store: MyStore(),
-    child: MyApp()
-    ));
+  setPathUrlStrategy();
+  runApp(VxState(store: MyStore(), child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -21,16 +20,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.system,
       theme: MyTheme.lightTheme(context),
       debugShowCheckedModeBanner: false,
       darkTheme: MyTheme.darkTheme(context),
-      initialRoute: MyRoutes.homeRoute,
+      initialRoute: MyRoutes.loginRoute,
       routes: {
-        "/" :(context) => LoginPage(),
-        MyRoutes.homeRoute:(context) => MyHomePage(),
-        MyRoutes.loginRoute:(context) => LoginPage(),
-        MyRoutes.cartRoute:(context) => MyCartPage()
+        "/": (context) => LoginPage(),
+        MyRoutes.homeRoute: (context) => MyHomePage(),
+        MyRoutes.loginRoute: (context) => LoginPage(),
+        MyRoutes.cartRoute: (context) => MyCartPage()
       },
     );
   }

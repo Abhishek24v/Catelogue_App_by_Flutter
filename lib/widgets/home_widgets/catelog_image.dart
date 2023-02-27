@@ -16,6 +16,6 @@ class CatelogImage extends StatelessWidget {
         .color(context.canvasColor)
         .make()
         .p16()
-        .wh40(context);
+        .wPCT(context: context, widthPCT: context.isMobile ? 40 : 20);
   }
 }
