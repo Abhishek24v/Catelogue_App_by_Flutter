@@ -19,7 +19,7 @@ class AddToCart extends StatelessWidget {
     return ElevatedButton(
         style: ButtonStyle(
             backgroundColor:
-                MaterialStateProperty.all(context.theme.buttonColor),
+                MaterialStateProperty.all(context.theme.backgroundColor),
             shape: MaterialStateProperty.all(StadiumBorder())),
         onPressed: () {
           if (!isInCart) {

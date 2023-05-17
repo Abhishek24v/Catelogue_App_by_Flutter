@@ -8,14 +8,13 @@ class MyTheme {
       fontFamily: GoogleFonts.poppins().fontFamily,
       cardColor: Colors.white,
       canvasColor: creamColor,
-      buttonColor: MyTheme.darkBlueColor,
-      accentColor: darkBlueColor,
+      backgroundColor: MyTheme.darkBlueColor,
+      hintColor: darkBlueColor,
       appBarTheme: AppBarTheme(
         color: Colors.white,
         elevation: 0.0,
         iconTheme: IconThemeData(color: Colors.black),
         // ignore: deprecated_member_use
-        textTheme: Theme.of(context).textTheme,
       ));
 
   static ThemeData darkTheme(BuildContext context) => ThemeData(
@@ -24,13 +23,12 @@ class MyTheme {
       fontFamily: GoogleFonts.poppins().fontFamily,
       cardColor: Colors.black,
       canvasColor: MyTheme.darkCreamColor,
-      buttonColor: MyTheme.lightBlueColor,
-      accentColor: Colors.white,
+      backgroundColor: MyTheme.lightBlueColor,
+      hintColor: Colors.white,
       appBarTheme: AppBarTheme(
         color: Colors.black,
         elevation: 0.0,
         iconTheme: IconThemeData(color: Colors.white),
-        textTheme: Theme.of(context).textTheme.apply(displayColor: Colors.white),
       ));
 
   //colors
